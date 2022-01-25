@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post(`/register`, Cont.register);
 app.post(`/login`, Cont.login);
+app.get(`/home`, authe, Cont.getbackdrop);
 app.post(`/home`, authe, autho, Cont.createbackdrop);
 
 app.listen(port, () => {

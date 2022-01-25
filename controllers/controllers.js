@@ -58,6 +58,21 @@ class Controller {
       next(error)
     }
   }
+
+  static async getbackdrop(req,res,next) {
+    try {
+      const UserId = +req.currentUser.id
+      const resu = await Backdrop.findAll({where: {
+        UserId
+      }})
+      if (!resu) {
+        throw {name: "Data not found"}
+      }
+      res.status(200).json(resu)
+    } catch (error) {
+      next(error)
+    }
+  }
 }
 
 module.exports = Controller;
