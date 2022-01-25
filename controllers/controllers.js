@@ -46,6 +46,18 @@ class Controller {
       next(error);
     }
   }
+
+  static async createbackdrop(req,res,next) {
+    try {
+      const UserId = +req.currentUser.id
+      const {title, description, img, img2, img3, video, video2, video3}
+      const batch = {title, description, img, img2, img3, video, video2, video3, UserId}
+      const resu = await Backdrop.create({batch})
+      res.status(201).json(resu)
+    } catch (error) {
+      next(error)
+    }
+  }
 }
 
 module.exports = Controller;
